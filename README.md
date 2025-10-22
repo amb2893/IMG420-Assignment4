@@ -32,7 +32,7 @@ make good use of object‑oriented principles? Yes the code is well structured a
 - [x] Use of Godot features - 2 pts Appropriate use of TileMap/TileSet, NavigationAgent2D, AnimatedSprite2D, Particles2D, CollisionShape2D and CharacterBody2D (with move_and_slide() , gravity and input) Uses the tilemap and tileset to create the platforms the player moves on, NavigationAgent2D is used to move the fly and make sure he flies faster around the player, AnimatedSprite2D is used for the enemy and player animations, Particles2D is used to show the player picking up Lemmy and succeeding in saving him, CollisionShape2D is used for the player the enemy and the pickup (Lemmy) to see if they touch, and I use CharacterBody2D with move_and_slide to move both the player and the enemy with gravity and input for the player 
 - [x] Documentation & submission - 2 pts Presence of README, clear instructions for running the game, and proper packaging of the project. See above
 
-##Video of Game
+## Video of Game
 
 ## Credits  
 Developed as part of **IMG420 - Assignment 4**.  
