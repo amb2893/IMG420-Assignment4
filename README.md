@@ -33,7 +33,7 @@ make good use of object‑oriented principles? Yes the code is well structured a
 - [x] Documentation & submission - 2 pts Presence of README, clear instructions for running the game, and proper packaging of the project. See above
 
 ## Video of Game
-
+Here is the URL of my recording of me playing the game. [Zoom Recording Link](https://nau.zoom.us/rec/share/cLKM4Lm2FIDTT1flynLIsJc7DNVpz-5LXtawPvrg6MKOJ1U7f2LwLUZAAEVcp-Zq.54N9OQlwaxmHypmI?startTime=1761094937000)
 ## Credits  
 Developed as part of **IMG420 - Assignment 4**.  
 Built with the [Godot Engine](https://godotengine.org/).  
