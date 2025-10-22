@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnh2ujbdsu03d"]
+
+[ext_resource type="Texture2D" uid="uid://dhkri3m1d2tuf" path="res://asset/fly_a.png" id="1_4gyqm"]
+[ext_resource type="Script" uid="uid://mywi0p5ga720" path="res://Enemy.cs" id="1_qi2p4"]
+[ext_resource type="Texture2D" uid="uid://chkc61788qx24" path="res://asset/fly_b.png" id="2_qi2p4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iifgy"]
+radius = 23.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_qi2p4"]
+vertices = PackedVector2Array(1201.92, 43.0078, 1199.07, 417.68, 990.117, 411.211, 936.039, 260, 58.9688, 44.9766, 710.719, 260, 58.0234, 482.07, 667.719, 486.93)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 4, 5, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(48, 492, 49, 35, 1212, 33, 1209, 428, 983, 421, 929, 270, 719, 270, 676, 497)])
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_epg4t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4gyqm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qi2p4")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_qi2p4")
+SpeedIncrease = 10.0
+PatrolPoints = Array[NodePath]([NodePath("point1"), NodePath("point2"), NodePath("point3"), NodePath("point4"), NodePath("point5"), NodePath("point6")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6, -6)
+shape = SubResource("CircleShape2D_iifgy")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-50, -37)
+navigation_polygon = SubResource("NavigationPolygon_qi2p4")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4, -2)
+sprite_frames = SubResource("SpriteFrames_epg4t")
+animation = &"run"
+
+[node name="point1" type="Marker2D" parent="."]
+position = Vector2(674, 58)
+
+[node name="point2" type="Marker2D" parent="."]
+position = Vector2(897, 133)
+
+[node name="point3" type="Marker2D" parent="."]
+position = Vector2(1004, 287)
+
+[node name="point4" type="Marker2D" parent="."]
+position = Vector2(1134, 230)
+
+[node name="point5" type="Marker2D" parent="."]
+position = Vector2(1117, 64)
+
+[node name="point6" type="Marker2D" parent="."]
+position = Vector2(922, 31)

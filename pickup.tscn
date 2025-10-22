@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctrfcbpk3ei6y"]
+
+[ext_resource type="Texture2D" uid="uid://d1wiorvmnyrhb" path="res://asset/mouse_rest.png" id="1_iqk3k"]
+[ext_resource type="Script" uid="uid://c8a53er4npmpr" path="res://Pickup.cs" id="1_weqpt"]
+[ext_resource type="Texture2D" uid="uid://cxnaoi3hdrprc" path="res://asset/sparkle.png" id="3_amdaw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_weqpt"]
+size = Vector2(69, 49)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_amdaw"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 90.0
+angle_min = 45.0
+angle_max = 135.0
+gravity = Vector3(0, 980, 0)
+scale_min = 0.02
+scale_max = 0.08
+
+[node name="Pickup" type="Area2D"]
+process_mode = 3
+process_priority = 2
+position = Vector2(1007, 335)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_weqpt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(39, 24)
+shape = SubResource("RectangleShape2D_weqpt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(37, 13)
+texture = ExtResource("1_iqk3k")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+process_mode = 3
+position = Vector2(30, 2)
+amount = 10
+texture = ExtResource("3_amdaw")
+lifetime = 0.4
+fixed_fps = 0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_amdaw")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1206.0
+offset_top = -570.0
+offset_right = -738.0
+offset_bottom = -504.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "YOU WIN! Lemmy the Mouse is safe!"

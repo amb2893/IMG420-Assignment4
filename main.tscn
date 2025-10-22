@@ -1,0 +1,77 @@
+[gd_scene load_steps=13 format=4 uid="uid://cbys6hew513an"]
+
+[ext_resource type="Script" uid="uid://ho7riemnwuhl" path="res://Main.cs" id="1_5vw27"]
+[ext_resource type="Script" uid="uid://doucuetk08dsq" path="res://Player.cs" id="1_h2yge"]
+[ext_resource type="TileSet" uid="uid://juds13bnyonm" path="res://tileSet.tres" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://djv0c4uac0y14" path="res://asset/character_purple_walk_a.png" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bnh2ujbdsu03d" path="res://enemy.tscn" id="2_4c57u"]
+[ext_resource type="Texture2D" uid="uid://dmdojnlu8kfvg" path="res://asset/character_purple_front.png" id="2_272bh"]
+[ext_resource type="Texture2D" uid="uid://ct1q6ben2ln6d" path="res://asset/character_purple_idle.png" id="3_5vw27"]
+[ext_resource type="PackedScene" uid="uid://ctrfcbpk3ei6y" path="res://pickup.tscn" id="3_efxa6"]
+[ext_resource type="Texture2D" uid="uid://cgkk1w5srgw5y" path="res://asset/character_purple_walk_b.png" id="3_lquwl"]
+[ext_resource type="Texture2D" uid="uid://ctvnqm0787rlj" path="res://asset/character_purple_jump.png" id="4_kek77"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(44.5, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1bvp3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_272bh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5vw27")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5vw27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kek77")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1bvp3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lquwl")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_5vw27")
+EnemyScene = ExtResource("2_4c57u")
+PickupScene = ExtResource("3_efxa6")
+
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
+script = ExtResource("1_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(50.75, 290.5)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(50, 284)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_1bvp3")
+animation = &"jump"
+frame_progress = 0.665538
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAUAAAABAAMAAAABAAUAAAACAAMAAAACAAUAAAACAAMAAAADAAUAAAACAAMAAAAEAAUAAAADAAMAAAAGAAQAAAABAAMAAAAGAAUAAAAAAAMAAAAGAAYAAAAAAAMAAAAGAAcAAAAAAAMAAAAHAAUAAAAAAAMAAAAHAAYAAAAAAAMAAAAHAAcAAAAAAAMAAAAIAAUAAAAAAAMAAAAIAAYAAAAAAAMAAAAIAAcAAAAAAAMAAAAHAAQAAAACAAMAAAAIAAQAAAADAAMAAAAAAAYAAAAAAAMAAAAAAAcAAAAAAAMAAAAAAAgAAAAAAAMAAAAAAAkAAAAAAAMAAAABAAkAAAAAAAMAAAACAAkAAAAAAAMAAAADAAkAAAAAAAMAAAAEAAkAAAAAAAMAAAAEAAgAAAAAAAMAAAAEAAcAAAAAAAMAAAAEAAYAAAAAAAMAAAADAAYAAAAAAAMAAAACAAYAAAAAAAMAAAABAAYAAAAAAAMAAAABAAcAAAAAAAMAAAABAAgAAAAAAAMAAAACAAgAAAAAAAMAAAACAAcAAAAAAAMAAAADAAcAAAAAAAMAAAADAAgAAAAAAAMAAAAGAAgAAAAAAAMAAAAGAAkAAAAAAAMAAAAHAAkAAAAAAAMAAAAHAAgAAAAAAAMAAAAIAAgAAAAAAAMAAAAIAAkAAAAAAAMAAAALAAkAAAAAAAMAAAALAAgAAAAAAAMAAAALAAcAAAAAAAMAAAALAAYAAAAAAAMAAAALAAUAAAAAAAMAAAALAAQAAAAAAAMAAAALAAMAAAAAAAMAAAALAAIAAAACAAMAAAAMAAIAAAADAAMAAAAMAAMAAAAAAAMAAAAMAAQAAAAAAAMAAAAMAAUAAAAAAAMAAAAMAAYAAAAAAAMAAAAMAAcAAAAAAAMAAAAMAAgAAAAAAAMAAAAMAAkAAAAAAAMAAAAOAAUAAAABAAMAAAAPAAUAAAACAAMAAAAQAAUAAAADAAMAAAAOAAYAAAAAAAMAAAAOAAcAAAAAAAMAAAAOAAgAAAAAAAMAAAAOAAkAAAAAAAMAAAAPAAkAAAAAAAMAAAAQAAkAAAAAAAMAAAAQAAgAAAAAAAMAAAAQAAcAAAAAAAMAAAAQAAYAAAAAAAMAAAAPAAYAAAAAAAMAAAAPAAcAAAAAAAMAAAAPAAgAAAAAAAMAAAAFAAYAAAAAAAYAAAAFAAcAAAAAAAYAAAAFAAgAAAAAAAYAAAAFAAkAAAAAAAYAAAAJAAUAAAAAAAYAAAAJAAYAAAAAAAYAAAAJAAcAAAAAAAYAAAAJAAgAAAAAAAYAAAAJAAkAAAAAAAYAAAANAAYAAAAAAAYAAAANAAcAAAAAAAYAAAANAAgAAAAAAAYAAAANAAkAAAAAAAYAAAAHAAoAAAAAAAMAAAAIAAoAAAAAAAMAAAAGAAoAAAAAAAMAAAAEAAoAAAAAAAMAAAADAAoAAAAAAAMAAAACAAoAAAAAAAMAAAABAAoAAAAAAAMAAAALAAoAAAAAAAMAAAAMAAoAAAAAAAMAAAAOAAoAAAAAAAMAAAAPAAoAAAAAAAMAAAAQAAoAAAAAAAMAAAAFAAoAAAAAAAYAAAAJAAoAAAAAAAYAAAANAAoAAAAAAAYAAAAAAAoAAAAAAAMAAAAKAAMAAAACAAMAAAAKAAQAAAAAAAMAAAAKAAUAAAAAAAMAAAAKAAYAAAAAAAMAAAAKAAcAAAAAAAMAAAAKAAgAAAAAAAMAAAAKAAkAAAAAAAMAAAAKAAoAAAAAAAMAAAA=")
+tile_set = ExtResource("1_ig7tw")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(1013, 286)
